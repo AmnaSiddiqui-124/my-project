@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNBC | SPORTS 2026</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { background-color: #fff; color: #170854; overflow-x: hidden; }
+        .container { max-width: 1140px; margin: 20px auto; padding: 0 15px; }
+
+        /* ARY Red Border Heading */
+        .section-header { border-bottom: 2px solid #eee; margin-bottom: 30px; position: relative; padding-bottom: 5px; }
+        .section-title { font-size: 32px; font-weight: bold; color: #190d63; text-transform: uppercase; }
+        .section-header::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 3px; background-color: rgb(24, 7, 101); }
+
+        /* Layout Grid */
+        #home-view { display: grid; grid-template-columns: 2.2fr 1fr; gap: 40px; }
+        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+
+        /* Featured Large Card */
+        .card.featured { grid-column: 1 / -1; display: flex; gap: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; margin-bottom: 10px; cursor: pointer; }
+        .card.featured .img-box { flex: 1.5; }
+        .card.featured .card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .card.featured img { width: 100%; height: 360px; object-fit: cover; }
+        .card.featured .card-title { font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 15px; }
+
+        /* Normal Cards */
+        .card { cursor: pointer; }
+        .card:hover .card-title { color: rgb(23, 13, 92); }
+        .card img { width: 100%; height: 210px; object-fit: cover; border-radius: 2px; background: #f0f0f0; }
+        .card-body { padding: 12px 0; }
+        .card-date { font-size: 11px; color: rgb(26, 13, 90); font-weight: bold; margin-bottom: 6px; text-transform: uppercase; }
+        .card-title { font-size: 18px; font-weight: bold; line-height: 1.4; color: #1f0854; transition: 0.2s; }
+        .card-excerpt { font-size: 15px; color: #666; line-height: 1.6; display: block; }
+
+        /* Sidebar */
+        .sidebar-title { font-size: 16px; font-weight: bold; border-bottom: 2px solid #1e1789; padding-bottom: 5px; margin-bottom: 20px; }
+        .side-item { display: flex; gap: 12px; margin-bottom: 15px; border-bottom: 1px solid #f5f5f5; padding-bottom: 15px; cursor: pointer; }
+        .side-item img { width: 90px; height: 65px; object-fit: cover; background: #eee; }
+        .side-text { font-size: 14px; font-weight: bold; line-height: 1.3; }
+        .side-item:hover .side-text { color: rgb(27, 13, 97); }
+
+        /* Article Detail Page */
+        #article-view { display: none; max-width: 800px; margin: 0 auto; padding-top: 10px; }
+        .back-btn { background: #180653; color: #fff; border: none; padding: 8px 18px; cursor: pointer; margin-bottom: 20px; font-size: 12px; font-weight: bold; border-radius: 2px; }
+        .back-btn:hover { background: rgb(19, 18, 97); }
+        .article-h { font-size: 40px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+        .article-img { width: 100%; max-height: 500px; object-fit: cover; margin-bottom: 25px; border-radius: 4px; }
+        .article-body p { font-size: 19px; line-height: 1.8; color: #333; margin-bottom: 20px; text-align: justify; }
+
+        @media (max-width: 850px) {
+            #home-view { grid-template-columns: 1fr; }
+            .card.featured { flex-direction: column; }
+            .card.featured img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- UPDATED HEADER (World Style) -->
+    <nav class="bg-white border-b-2 border-[#0d2a4d] p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-black text-[#0d2a4d] tracking-tighter">DNBC <span class="text-green-600">SPORTS</span></div>
+            <a href="index.html" class="text-[#0d2a4d] font-bold hover:text-green-600 transition flex items-center">
+                <i class="fas fa-house-chimney mr-2"></i> BACK TO HOME
+            </a>
+        </div>
+    </nav>
+   
+<div class="container">
+    <div class="section-header">
+        <h1 class="section-title">Sports</h1>
+    </div>
+
+    <div id="home-view">
+        <div class="news-grid" id="main-content"></div>
+
+        <div class="sidebar">
+            <div class="sidebar-title">LATEST NEWS</div>
+            <div id="side-content"></div>
+        </div>
+    </div>
+
+    <div id="article-view">
+        <button class="back-btn" onclick="goBack()">← Back to Sports</button>
+        <h1 id="det-title" class="article-h"></h1>
+        <div style="color:#888; margin-bottom:20px; font-size:14px;">By Web Desk | Updated March 06, 2026</div>
+        <img id="det-img" src="" class="article-img">
+        <div id="det-body" class="article-body"></div>
+    </div>
+</div>
+
+<!-- UPDATED FOOTER (World Style) -->
+<footer class="bg-white text-[#0d2a4d] py-12 border-t border-gray-200">
+    <div class="container mx-auto px-6 text-center">
+        <div class="text-4xl font-black mb-2 tracking-tighter">DNBC <span class="text-green-600">SPORTS</span></div>
+        <p class="text-gray-500 mb-8 uppercase tracking-[0.4em] text-[10px] font-bold">Global Sports Reporting • Arena Headquarters</p>
+        <div class="flex justify-center space-x-8 text-xl mb-8">
+            <i class="fab fa-facebook-f hover:text-blue-600 cursor-pointer transition"></i>
+            <i class="fab fa-twitter hover:text-blue-600 cursor-pointer transition"></i>
+            <i class="fab fa-instagram hover:text-pink-600 cursor-pointer transition"></i>
+            <i class="fab fa-youtube hover:text-red-600 cursor-pointer transition"></i>
+        </div>
+        <p class="text-gray-400 text-xs font-bold">&copy; 2026 DNBC NEWS NETWORK. ALL RIGHTS RESERVED. ACCURATE. UNBIASED. GLOBAL.</p>
+    </div>
+</footer>
+
+<script>
+    const newsData = [
+        {
+            id: 1,
+            featured: true,
+            title: "HISTORIC WIN: India crush England by seven runs to enter T20 World Cup Final",
+            date: "06-MAR 2026",
+            image: "material/t20-win.jpg", // Cricket Celebration Image
+            excerpt: "MUMBAI: In a nerve-wracking semi-final, India successfully defended their total to knock England out and secure a spot in the grand finale in Ahmedabad.",
+            content: `
+                <p><b>MUMBAI: India has made history by defeating England by seven runs in a high-octane T20 World Cup semi-final at the Wankhede Stadium on Thursday. The Men in Blue displayed exceptional character to defend a challenging total against a powerful English batting lineup.</b></p>
+                <p>Batting first, India posted a massive 253-7, thanks to a sensational knock by Sanju Samson, who smashed 89 off just 45 balls. His innings was laced with six towering sixes that kept the Mumbai crowd on their feet. Hardik Pandya and Suryakumar Yadav also provided crucial cameos in the death overs to push the score past the 250-mark.</p>
+                <p>England's chase started with a bang as Phil Salt and Jos Buttler took the attack to the Indian pacers. However, the introduction of spin changed the complexion of the game. Axar Patel and Kuldeep Yadav squeezed the run flow, picking up vital wickets in the middle overs. Despite a heroic century from Jacob Bethell (105 off 48), England required 15 runs in the final over bowled by Jasprit Bumrah.</p>
+                <p>Bumrah, showing why he is the best in the world, conceded only 7 runs and took a wicket to seal the victory for India. The stadium erupted as the final ball was delivered, marking India's journey to the final where they will face New Zealand this Sunday. This win cements India's dominance in the tournament as they remain undefeated.</p>
+            `
+        },
+        {
+            id: 2,
+            featured: false,
+            title: "Arjun Tendulkar ties the knot with Saaniya Chandhok in grand ceremony",
+            date: "06-MAR 2026",
+            image: "material/arjun-tendulkar-wedding.jpg",
+            content: `
+                <p><b>MUMBAI: Cricketer Arjun Tendulkar, son of legend Sachin Tendulkar, married entrepreneur Saaniya Chandhok in a star-studded ceremony at The St Regis Mumbai on Thursday.</b></p>
+                <p>The high-profile event drew a diverse crowd of luminaries from the worlds of sports, entertainment, and politics. Public figures included former BCCI secretary and incumbent ICC chairman Jay Shah, former India captain and coach Rahul Dravid, ex-India cricketers Harbhajan Singh and many others.</p>
+                <p>Arjun has played for India at the U-19 level and in the Indian Premier League for the Mumbai Indians. He represents Goa in the domestic circuit. Saaniya is a granddaughter of industrialist Ravi Ghai and is an entrepreneur herself in the veterinarian field.</p>
+            `
+        },
+        {
+            id: 3,
+            featured: false,
+            title: "Babar out as Pakistan announce squad for Bangladesh ODIs",
+            date: "05-MAR 2026",
+            image: "material/pakistan-odi-squad-2026.jpg",
+            content: `
+                <p><b>LAHORE: The Pakistan Cricket Board (PCB) has named a 15-member ODI squad for the three-match series with Bangladesh scheduled for mid-March.</b></p>
+                <p>Shaheen Shah Afridi will continue to lead the ODI side, with six uncapped players included in the squad. The selectors have decided to rest Babar Azam to manage his workload. The uncapped players are Abdul Samad, Maaz Sadaqat, Muhammad Ghazi Ghori, Saad Masood, Sahibzada Farhan and Shamyl Hussain.</p>
+                <p>The series is seen as a preparation ground for the upcoming Champions Trophy, allowing younger talent to prove their worth on the international stage.</p>
+            `
+        },
+        {
+            id: 4,
+            featured: false,
+            title: "Real Madrid will 'keep fighting' in title race, vows Arbeloa",
+            date: "06-MAR 2026",
+            image: "material/real-madrid-stadium.jpg",
+            content: `
+                <p><b>MADRID: Real Madrid's coaching staff remains confident that the La Liga title race is far from over.</b></p>
+                <p>Speaking to the press, Alvaro Arbeloa emphasized the team's resilience. "We have the best players in the world and the mentality to win under pressure. Barcelona might be ahead, but we will fight for every single point until the end," he stated.</p>
+            `
+        },
+        {
+            id: 5,
+            featured: false,
+            title: "Henman says Raducanu needs more physicality to rise up rankings",
+            date: "06-MAR 2026",
+            image: "material/emma-raducanu-tennis.jpg",
+            content: `
+                <p><b>LONDON: Former tennis star Tim Henman has shared his views on Emma Raducanu's journey back to the top.</b></p>
+                <p>He believes that while the skill is there, Raducanu needs to focus on her physical conditioning to handle the intensity of the WTA tour. "The modern game is incredibly demanding, and stamina is just as important as technique," Henman remarked.</p>
+            `
+        }
+    ];
+
+    function loadContent() {
+        const main = document.getElementById('main-content');
+        const side = document.getElementById('side-content');
+        if(!main || !side) return;
+        main.innerHTML = '';
+        side.innerHTML = '';
+
+        newsData.forEach(news => {
+            if(news.featured) {
+                main.innerHTML += `
+                    <div class="card featured" onclick="showDetail(${news.id})">
+                        <div class="img-box"><img src="${news.image}" alt=""></div>
+                        <div class="card-content">
+                            <div class="card-date">${news.date}</div>
+                            <div class="card-title">${news.title}</div>
+                            <p class="card-excerpt">${news.excerpt}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                main.innerHTML += `
+                    <div class="card" onclick="showDetail(${news.id})">
+                        <img src="${news.image}" alt="">
+                        <div class="card-body">
+                            <div class="card-date">SPORTS | ${news.date}</div>
+                            <div class="card-title">${news.title}</div>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        newsData.slice(1, 5).forEach(news => {
+            side.innerHTML += `
+                <div class="side-item" onclick="showDetail(${news.id})">
+                    <img src="${news.image}" alt="">
+                    <div class="side-text">${news.title}</div>
+                </div>
+            `;
+        });
+    }
+
+    function showDetail(id) {
+        const item = newsData.find(n => n.id == id);
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('article-view').style.display = 'block';
+
+        document.getElementById('det-title').innerText = item.title;
+        document.getElementById('det-img').src = item.image;
+        document.getElementById('det-body').innerHTML = item.content;
+        window.scrollTo(0,0);
+    }
+
+    function goBack() {
+        document.getElementById('article-view').style.display = 'none';
+        document.getElementById('home-view').style.display = 'grid';
+    }
+
+    window.onload = loadContent;
+</script>
+
+</body>
+</html>

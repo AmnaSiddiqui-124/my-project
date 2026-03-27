@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About DNBC</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+
+    <style>
+        /* NAVBAR STYLE FOR BACK TO HOME */
+        .custom-nav {
+            background: white;
+            border-bottom: 3px solid #0d2a4d;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0d2a4d;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .back-home-link {
+            color: #0d2a4d;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-home-link:hover {
+            color: #cc0000;
+        }
+
+        /* HERO BANNER */
+
+        /* BANNER */
+        .about-banner {
+            position: relative;
+            height: 350px;
+            background-image: url("material/news-reporters.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* OVERLAY */
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .banner-overlay::before {
+            font-display: fallback;
+            content: "";
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+
+        }
+
+        /* TEXT */
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-title {
+            font-size: 55px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .banner-subtitle {
+            font-size: 25px;
+            opacity: 0.5;
+        }
+
+        /* ABOUT */
+        .about-section {
+            background: rgb(245, 243, 243);
+        }
+
+        .content {
+            border-top: 2px solid rgb(119, 185, 197);
+
+        }
+
+        .section-title {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 40px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #0d2a4d;
+        }
+
+        .about-DNBC-content p {
+            text-align: justify;
+            font-weight: 600;
+            font-size: 17px;
+            margin: 10px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* Hexagon layout */
+        .layout {
+            position: relative;
+            height: 375px;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        /* COMMON SHAPE STYLE */
+        .hexagon {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* TOP LEFT */
+        .hex1 {
+            top: 0;
+            left: 60px;
+            border-radius: 12px;
+            background-image: url("material/sports-stadium.jpg");
+        }
+
+        /* TOP RIGHT */
+        .hex4 {
+            top: 0;
+            right: 60px;
+            transform: skewX(-10deg);
+            border-radius: 10px;
+            background-image: url("material/tech.jpg");
+        }
+
+        /* BOTTOM LEFT */
+        .hex3 {
+            height: 186px;
+            width: 206px;
+            bottom: 0;
+            left: 9%;
+
+            clip-path: polygon(50% 0%,
+                    100% 50%,
+                    50% 100%,
+                    0% 50%);
+
+            background-image: url("material/business.jpg");
+        }
+
+        /* BOTTOM RIGHT */
+        .hex2 {
+            height: 185px;
+            width: 180px;
+            bottom: 0;
+            right: 70px;
+            border-radius: 50%;
+            background-image: url("material/world-map-glob.jpg");
+        }
+
+        /* CENTER HEXAGON */
+
+        .hex5 {
+            top: 27%;
+            left: 33%;
+            transform: translate(-50%, -50%);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background-image: url("material/health.jpg");
+        }
+
+        #new-shape {
+            transform: scale(1.2);
+        }
+
+        .text {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 6px 14px;
+            border-radius: 6px;
+        }
+
+
+        /* MISSION CARDS */
+        .mission-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-top {
+            background: #0d2a4d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-top i {
+            color: #fff;
+            font-size: 35px;
+        }
+
+        .card-body-custom {
+            background: #f8f9fc;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* COUNTER */
+        .facts-figures {
+            text-decoration: underline;
+            font-size: 35px;
+        }
+
+        .counter-section {
+            background: #0d2a4d;
+            padding: 40px 0;
+            color: #fff;
+        }
+
+        .counter-box {
+            text-align: center;
+            position: relative;
+        }
+
+        /* vertical divider */
+        .counter-box::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20%;
+            width: 1px;
+            height: 65%;
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .counter-box:last-child::after {
+            display: none;
+        }
+
+        /* icon */
+        .counter-icon {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        /* number */
+        .counter-number {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        /* label */
+        .counter-label {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            color: #9aa6af;
+            font-weight: 500;
+        }
+
+        /* JOURNALISM SECTION */
+        .team-section {
+            background: rgb(245, 243, 243);
+        }
+
+
+        .journalism-content p {
+            font-weight: 600;
+            font-size: 18px;
+            text-align: justify;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* TEAM */
+        .row-1 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .row-1 div {
+            flex: 1 1 200px;
+            max-width: 250px;
+        }
+
+        .para {
+            font-weight: 600;
+        }
+
+        .team-card {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.3s all ease-in;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 220px;
+        }
+
+        .team-info {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .team-info h5 {
+            color: #0d2a4d;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .team-info span {
+            font-size: 18px;
+            letter-spacing: 0.01rem;
+        }
+
+        .team-info p {
+            font-size: 14px;
+            line-height: 1.2;
+            color: #333;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* footer */
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a, #1b1b1b);
+            color: #ccc;
+            padding: 70px 0 20px;
+            font-family: Arial;
+        }
+
+        .footer-logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 14px
+        }
+
+        .footer h5 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-left: 3px solid #0d2a4d;
+            padding-left: 10px;
+        }
+
+        .footer a {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: .3s;
+        }
+
+        .footer a:hover {
+            color: #fff;
+            padding-left: 6px
+        }
+
+        .social-icons i {
+            font-size: 20px;
+            margin-right: 10px;
+            padding: 9px;
+            border-radius: 50%;
+            transition: .3s
+        }
+
+        .social-icons i:hover {
+            transform: scale(1.2);
+        }
+
+        /* Facebook */
+        .social-icons .bi-facebook:hover {
+            color: #056aee;
+        }
+
+        /* Twitter */
+        .social-icons .bi-twitter:hover {
+            color: #1da1f2;
+        }
+
+        /* Instagram */
+        .social-icons .bi-instagram:hover {
+            color: #e63454;
+        }
+
+        /* YouTube */
+        .social-icons .bi-youtube:hover {
+            color: #e00c0c;
+        }
+
+        /* LinkedIn */
+        .social-icons .bi-linkedin:hover {
+            color: #0a66c2;
+        }
+
+        .app-icons i {
+            font-size: 28px;
+            margin-right: 12px;
+            color: #ccc;
+            transition: .3s
+        }
+
+        .app-icons i:hover {
+            color: #0d2a4d
+        }
+
+        .newsletter {
+            margin: 10px 0 20px
+        }
+
+        .newsletter input {
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            background: #1b1b1b;
+            color: #fff
+        }
+
+        .newsletter input:invalid {
+            border: 1px solid #ff4d4d;
+        }
+
+        .newsletter input:focus {
+            border: 2px solid #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px #0d2a4d;
+        }
+
+        .newsletter button {
+            background: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-weight: bold;
+            transition: .3s
+        }
+
+        .newsletter button:hover {
+            background: #163a66
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: #888
+        }
+
+        .top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0d2a4d;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: #fff
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR WITH BACK TO HOME -->
+    <nav class="custom-nav">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="nav-logo">DNBC</a>
+            <a href="index.html" class="back-home-link">
+                <i class="bi bi-house-door-fill me-2"></i> BACK TO HOME
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <section class="about-banner">
+
+        <div class="banner-overlay"></div>
+
+        <div class=" banner-content">
+
+            <h1 class="banner-title" data-aos="fade-down-right" data-aos-duration="1300"> DNBC</h1>
+
+            <p class="banner-subtitle" data-aos="fade-right" data-aos-duration="1300" data-aos-delay="1000">
+                **Global News Reporting Network**
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT SECTION -->
+
+    <section class="about-section py-5">
+
+        <div class="container main-sec">
+
+            <div class="content row align-items-center">
+
+                <div class="col-lg-6 fs-1 about-DNBC-content">
+                    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1400" data-aos-delay="1200">
+                        <h2 class="section-title">About DNBC</h2>
+
+                        <p>
+                            DNBC News is a leading international news organization based in London,
+                            connecting audiences worldwide through fast, reliable, and unbiased
+                            reporting across the multiple digital platforms.
+                        </p>
+
+                        <p>
+                            Since its establishment, DNBC has built a strong reputation for
+                            delivering breaking news, the investigative journalism, and in-depth
+                            analysis that informs millions of readers around the world.
+                        </p>
+
+                        <p>
+                            Our team of journalists and reporters operates across continents,
+                            covering politics, business, tech, global affairs, health,& sports.
+                        </p>
+                        <p>DNBC is committed to delivering accurate, transparent, and responsible journalism. Using
+                            modern
+                            technology and real-time updates, we keep our audience informed about global events.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 mt-5">
+                    <div class="layout" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1200"
+                        data-aos-delay="2400">
+
+                        <div class="hexagon hex1">
+                            <div class="text">SPORTS</div>
+                        </div>
+                        <div class="hexagon hex2">
+                            <div class="text">WORLD</div>
+                        </div>
+
+                        <div class="hexagon hex3">
+                            <div class="text">BUSINESS</div>
+                        </div>
+                        <div class="hexagon hex4">
+                            <div class="text">TECH</div>
+                        </div>
+
+                        <div class="hexagon hex5" id="new-shape">
+                            <div class="text">HEALTH</div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSION VISION -->
+
+    <section class="py-4">
+
+        <div class="container">
+
+            <h2 class="section-title text-center mb-5">Our Guiding principles</h2>
+
+            <div class="row g-4 single">
+
+                <!-- MISSION -->
+
+                <div class="col-md-4">
+
+                    <div class="mission-card">
+
+                        <div class="card-top">
+                            <i class="bi bi-crosshair"></i>
+                            <h4>Our Mission</h4>
+                        </div>
+
+                        <div class="card-body-custom">
+                            <p>
+                                Our mission is to deliver the accurate and unbiased news that keeps people informed
+                                about
+                                important global events every single day.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VISION -->
+
+                <div class="col-md-4">
+
+                    <div class="mission-card">
+
+                        <div class="card-top">
+                            <i class="bi bi-eye"></i>
+                            <h4>Our Vision</h4>
+                        </div>
+
+                        <div class="card-body-custom">
+                            <p>
+                                Our vision is to become a trusted global news network that connects people with
+                                important events happening around the world.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VALUES -->
+
+                <div class="col-md-4">
+
+                    <div class="mission-card">
+
+                        <div class="card-top">
+                            <i class="bi bi-star"></i>
+                            <h4>Our Values</h4>
+                        </div>
+
+                        <div class="card-body-custom">
+                            <p>
+                                Our values focus on integrity and the transparency while delivering truthful news and
+                                respecting different perspectives across the world.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- COUNTER SECTION -->
+
+    <section class="counter-section">
+
+        <div class="container">
+            <h2 class="facts-figures mb-5 fw-bold text-center">Facts And Figures</h2>
+
+            <div class="row text-center">
+
+                <!-- REPORTERS -->
+                <div class="col-md-3 counter-box">
+
+                    <i class="bi bi-people-fill counter-icon"></i>
+
+                    <div class="counter-number">
+                        <span class="counter">800</span>+
+                    </div>
+
+                    <div class="counter-label">
+                        REPORTERS
+                    </div>
+
+                </div>
+
+                <!-- COUNTRIES -->
+                <div class="col-md-3 counter-box">
+
+                    <i class="bi bi-pin-map-fill counter-icon"></i>
+
+                    <div class="counter-number">
+                        <span class="counter">65</span>+
+                    </div>
+
+                    <div class="counter-label">
+                        COUNTRIES
+                    </div>
+
+                </div>
+
+                <!-- LANGUAGES -->
+                <div class="col-md-3 counter-box">
+
+                    <i class="bi bi-translate counter-icon"></i>
+
+                    <div class="counter-number">
+                        <span class="counter">5</span>+
+                    </div>
+
+                    <div class="counter-label">
+                        LANGUAGES
+                    </div>
+
+                </div>
+
+                <!-- LONDON TIME -->
+                <div class="col-md-3 counter-box">
+
+                    <i class="bi bi-clock-fill counter-icon"></i>
+
+                    <div class="counter-number" id="london-time">
+                        00:00:00 PM
+                    </div>
+
+                    <div class="counter-label">
+                        LONDON TIME
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- JOURNALISM SECTION -->
+
+    <section class="py-5 team-section">
+
+        <div class="container">
+
+            <div class="row align-items-center  ">
+
+                <div class="col-lg-6 mt-5 pe-lg-5">
+
+                    <img src="material/newsroom-journalists-working.jpg" class="img-fluid rounded shadow mb-5">
+                </div>
+
+                <div class="col-lg-6 mb-4 journalism-content">
+
+                    <h2 class="section-title">Modern Journalism</h2>
+
+                    <p>
+                        DNBC combines traditional journalism with modern digital storytelling.
+                        Through multimedia reporting, live updates, and data-driven journalism
+                        we bring the world closer to our audience.
+                    </p>
+
+                    <p>
+                        Our reporters work in some of the most challenging environments
+                        to deliver accurate information when it matters most.
+                    </p>
+
+                    <p>At DNBC, we believe responsible journalism shapes an informed society. Combining experienced
+                        reporting with digital tools, we ensure every story is accurate, balanced, and impactful,
+                        providing timely information with integrity and credibility.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TEAM SECTION -->
+
+    <section class="team-section py-5 bg-light">
+
+        <div class="container">
+
+            <h2 class="text-center section-title mb-2">
+                Meet Our Team
+            </h2>
+            <p class="para text-center fs-5 ">Creative minds behind our website</p>
+            <div class="row-1 g-4">
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                    <div class="team-card">
+
+                        <img src="material/man-blank-face-1.jpg">
+
+                        <div class="team-info">
+
+                            <h5>Hammaad</h5>
+                            <span>Senior Reporter</span>
+                            <p>Covers major news and events daily.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                    <div class="team-card">
+
+                        <img src="material/man-blank-face-2.jpg">
+
+                        <div class="team-info">
+
+                            <h5>Hassan</h5>
+                            <span>Political Analyst</span>
+                            <p>Analyzes politics and government policies.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                    <div class="team-card">
+
+                        <img src="material/female-blank-face-1.jpg">
+
+                        <div class="team-info">
+
+                            <h5>Maira</h5>
+                            <span>Sports Correspondent</span>
+                            <p>Reports sports events and match highlights.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                    <div class="team-card">
+
+                        <img src="material/female-blank-face-2.jpg">
+
+                        <div class="team-info">
+
+                            <h5>Maryam</h5>
+                            <span>Business Editor</span>
+                            <p>Covers business news and market trends.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+
+                    <div class="team-card">
+
+                        <img src="material/female-blank-face-2.jpg">
+
+                        <div class="team-info">
+
+                            <h5>Nabiya</h5>
+                            <span>Tech Reporter</span>
+                            <p>Reports latest tech updates and gadgets.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-logo">DNBC NEWS</div>
+
+                    <p class="mt-3">
+                        DNBC is a global digital news network providing breaking news, world updates,
+                        business insights and sports coverage from across the globe.
+                    </p>
+
+                    <div class="social-icons mt-3">
+                        <i class="bi bi-facebook"></i>
+
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Navigation</h5>
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Today in World</a>
+                    <a href="#">Sports</a>
+                    <a href="#">Business</a>
+                    <a href="#">Contact Us</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>News</h5>
+                    <a href="#">Breaking News</a>
+                    <a href="#">World Politics</a>
+                    <a href="#">Technology</a>
+                    <a href="#">Health</a>
+                    <a href="#">Education</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Top Cities</h5>
+                    <a href="#">New York</a>
+                    <a href="#">London</a>
+                    <a href="#">Dubai</a>
+                    <a href="#">Tokyo</a>
+                    <a href="#">Paris</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+
+                    <h5>Contact</h5>
+
+                    <p><i class="bi bi-geo-alt"></i> DNBC Media Office<br>New York, USA</p>
+                    <p><i class="bi bi-envelope"></i> info@dnbcnews.com</p>
+                    <p><i class="bi bi-telephone"></i> +1 234 567 890</p>
+
+                    <a href="#"><i class="bi bi-map"></i> View Map Location</a>
+
+                    <h5 class="mt-4">Newsletter / Feedback</h5>
+
+                    <form class="newsletter">
+
+                        <input type="email" placeholder="Enter Your Email" required
+                            oninvalid="this.setCustomValidity('Please enter your email before subscribing')"
+                            oninput="this.setCustomValidity('')">
+
+                        <button type="submit">Subscribe</button>
+
+                    </form>
+
+                    <h5 class="mt-4">Mobile Apps</h5>
+
+                    <div class="app-icons">
+                        <i class="bi bi-google-play"></i>
+                        <i class="bi bi-apple"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>© 2026 DNBC Global News Network</p>
+
+                <div class="links d-flex justify-content-center gap-3">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms</a> |
+                    <a href="#">Feedback</a>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Waypoints  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <!-- CounterUp -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    <script>
+
+        $('.counter').counterUp({
+            delay: 10,
+            time: 2000,
+            offset: 100,
+            triggerOnce: true
+        });
+
+        $(window).on('scroll', function () {
+            if (window.Waypoint) {
+                Waypoint.refreshAll();
+            }
+        });
+
+        function londonTime() {
+            let d = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });
+            let t = new Date(d).toLocaleTimeString();
+            document.getElementById("london-time").innerHTML = t;
+        }
+
+        setInterval(londonTime, 1000);
+    </script>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // AOS ko initialize karo
+            AOS.init({
+                duration: 800,
+                offset: 20,
+                once: false,
+                mirror: true
+            });
+
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    AOS.refresh();
+                }, 1000);
+            });
+        });
+    </script>
+
+    <script>
+
+        document.getElementById("subscribeBtn").addEventListener("click", function () {
+
+            let email = document.getElementById("email");
+
+            if (email.value === "") {
+                email.reportValidity();
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNBC | Global Intelligence 2026</title>
+    <link rel="icon" type="image/png" href="material/world-map-glob.jpg">
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- counter -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- counter up -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <!-- waypoints -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    <style>
+        :root {
+            --dnbc-blue: #0d2a4d;
+            --dnbc-light-bg: #f4f7f9;
+            --dnbc-accent: #77b9c5;
+            --dnbc-red: #cc0000;
+        }
+
+        body {
+            background-color: var(--dnbc-light-bg);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .logo span{
+            border-color: red;
+        }
+        .section-title {
+            position: relative;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--dnbc-blue);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--dnbc-red);
+        }
+
+        /* News Ticker */
+        .ticker-container {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background: var(--dnbc-red);
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .ticker-text {
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+            padding-left: 100%;
+            color: var(--dnbc-blue);
+            font-weight: 500;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .hero-banner {
+            height: 450px;
+            background: linear-gradient(rgba(13, 42, 77, 0.8), rgba(13, 42, 77, 0.5)),
+                url('/material/mainiamge.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            border-bottom: 4px solid var(--dnbc-red);
+        }
+
+        .news-card {
+            background: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-card:hover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+        .news-card img { transition: transform 0.5s; }
+        .news-card:hover img { transform: scale(1.05); }
+
+        /* Cities Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+        .dropdown-menu {
+            border: none;
+            border-top: 3px solid var(--dnbc-red);
+            border-radius: 0;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .dropdown-item:hover {
+            background-color: var(--dnbc-light-bg);
+            color: var(--dnbc-red) !important;
+        }
+
+        .city-card {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        #news-modal {
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .counter-section {
+            background: var(--dnbc-blue);
+            color: white;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a, #1b1b1b);
+            color: #ccc;
+            padding: 70px 0 20px
+        }
+
+        .footer-logo { font-size: 30px; font-weight: bold; color: #fff; letter-spacing: 2px }
+        .footer h5 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-left: 3px solid #0d2a4d;
+            padding-left: 10px;
+        }
+
+        .footer a { color: #bbb; text-decoration: none; display: block; margin-bottom: 8px; transition: .3s }
+        .footer a:hover { color: #fff; padding-left: 6px }
+
+        .social-icons a { display: inline-block; color: #bbb; }
+        .social-icons i { font-size: 20px; margin-right: 10px; padding: 9px; border-radius: 50%; transition: .3s }
+        .social-icons .bi-facebook:hover { color: #056aee; }
+        .social-icons .bi-twitter:hover { color: #1da1f2; }
+        .social-icons .bi-instagram:hover { color: #e63454; }
+        .social-icons .bi-youtube:hover { color: #e00c0c; }
+        .social-icons .bi-linkedin:hover { color: #0a66c2; }
+
+        .newsletter input { border: none; padding: 10px; width: 100%; margin-bottom: 10px; background: #1b1b1b; color: #fff }
+        .newsletter button { background: #fff; border: none; padding: 10px; width: 100%; font-weight: bold; transition: .3s }
+        .newsletter button:hover { background: #163a66; color: white; }
+
+        .footer-bottom { border-top: 1px solid #333; margin-top: 40px; padding-top: 20px; text-align: center; color: #888 }
+        .top-btn { position: fixed; bottom: 20px; right: 20px; background: #0d2a4d; border: none; padding: 10px 14px; border-radius: 50%; font-size: 18px; color: #fff }
+    </style>
+</head>
+
+<body>
+
+    <div id="splash-screen" class="fixed inset-0 bg-[#0d2a4d] z-[99999] flex justify-center items-center">
+        <div class="text-white text-7xl font-bold animate-pulse">DNBC</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white sticky top-0 z-[500] border-b-2 border-[#77b9c5] shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="logo text-3xl font-black text-[#0d2a4d] tracking-tighter">DNBC <span class="text-red-600">HQ</span></div>
+
+            <ul class="hidden lg:flex space-x-6 font-bold text-[13px] uppercase text-gray-700 items-center mb-0">
+                <li><a href="index.html" class="hover:text-[#77b9c5]">Home</a></li>
+                <li><a href="about.html" class="hover:text-[#77b9c5]">ABOUT</a></li>
+                <li><a href="world.html" class="hover:text-[#77b9c5]">WORLD</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link hover:text-[#77b9c5] flex items-center" href="#" role="button">
+                        CITIES <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                    </a>
+                    <ul class="dropdown-menu absolute hidden bg-white py-2 w-40">
+                        <li><a class="dropdown-item py-2 px-4 block text-sm font-bold" href="london.html">LONDON</a></li>
+                        <li><a class="dropdown-item py-2 px-4 block text-sm font-bold" href="new-york.html">NEW YORK</a></li>
+                        <li><a class="dropdown-item py-2 px-4 block text-sm font-bold" href="dubai.html">DUBAI</a></li>
+                        <li><a class="dropdown-item py-2 px-4 block text-sm font-bold" href="tokyo.html">TOKYO</a></li>
+                        <li><a class="dropdown-item py-2 px-4 block text-sm font-bold" href="paris.html">PARIS</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="lifestyle.html" class="hover:text-[#77b9c5]">lifestyle</a></li>
+                <li><a href="sports.html" class="hover:text-[#77b9c5]">SPORTS</a></li>
+                <li><a href="business.html" class="hover:text-[#77b9c5]">BUSNIESS</a></li>
+                <li><a href="tech.html" class="hover:text-[#77b9c5]">TECH</a></li>
+                <li><a href="contact.html" class="hover:text-[#77b9c5]">CONTACT</a></li>
+            </ul>
+
+            <div class="flex items-center">
+                <button onclick="location.reload()"
+                    class="bg-[#cc0000] text-white px-4 py-2 text-xs font-bold uppercase rounded">
+                    Live
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breaking News Ticker -->
+    <div class="ticker-container">
+        <div class="ticker-label">BREAKING NEWS</div>
+        <div class="ticker-text">
+            • Global Markets reach record high in early 2026 trading • New breakthrough in sustainable energy announced
+            in London • DNBC Special Report: The future of AI in journalism • Olympic 2026 preparations begin in full
+            swing • Weather Alert: Extreme conditions expected in Northern Europe...
+        </div>
+    </div>
+
+    <header class="hero-banner">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl">
+                <span class="bg-red-600 px-3 py-1 text-sm font-bold uppercase mb-4 inline-block">Exclusive Report</span>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">Global Intelligence Network 2026</h1>
+                <p class="text-xl opacity-90">Providing real-time insights and unparalleled reporting from 65+ countries
+                    across the globe.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Main News Section -->
+        <div class="mb-16">
+            <h2 class="section-title">Top Stories</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="news-card rounded overflow-hidden" onclick="openStory(1)">
+                        <div class="relative h-[400px] overflow-hidden">
+                            <img src="material/globalmainimage.jpg" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent p-8 flex flex-col justify-end">
+                                <span class="text-red-500 font-bold mb-2">ECONOMY</span>
+                                <h3 class="text-3xl font-bold text-white mb-4">Digital Currency Overhaul: Central Banks Move to Unified Global Ledger</h3>
+                                <p class="text-gray-200">The world's largest economies have agreed on a framework that could change the way we handle money forever...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="news-card flex items-center gap-4 p-2 bg-white rounded shadow" onclick="openStory(2)">
+                        <img src="material/tech.jpg" class="w-32 h-24 object-cover rounded">
+                        <div class="flex-1">
+                            <span class="text-xs font-bold text-blue-600 uppercase">Technology</span>
+                            <h4 class="font-bold text-sm leading-snug">AI Regulation: New Global Accord signed in Geneva.</h4>
+                        </div>
+                    </div>
+                    <div class="news-card flex items-center gap-4 p-2 bg-white rounded shadow" onclick="openStory(3)">
+                        <img src="material/envierment.jpg" class="w-32 h-24 object-cover rounded">
+                        <div class="flex-1">
+                            <span class="text-xs font-bold text-green-600 uppercase">Environment</span>
+                            <h4 class="font-bold text-sm leading-snug">Arctic Ice Sheets stabilizing according to 2026 satellite imagery.</h4>
+                        </div>
+                    </div>
+                    <div class="news-card flex items-center gap-4 p-2 bg-white rounded shadow" onclick="openStory(4)">
+                        <img src="material/sportsimage.jpg" class="w-32 h-24 object-cover rounded">
+                        <div class="flex-1">
+                            <span class="text-xs font-bold text-red-600 uppercase">Sports</span>
+                            <h4 class="font-bold text-sm leading-snug">World Cup 2026: Host cities announce final stadium upgrades.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Network Section -->
+        <section class="mb-16">
+            <div class="text-center">
+                <h2 class="section-title">Global Network</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mt-10">
+                <a href="london.html" class="city-card group block overflow-hidden rounded-xl shadow-lg">
+                    <img src="material/london image.avif" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+                        <h3 class="text-white font-extrabold uppercase tracking-widest text-sm">London</h3>
+                        <p class="text-white/70 text-[10px] uppercase">Live Reporting</p>
+                    </div>
+                </a>
+                <a href="new-york.html" class="city-card group block overflow-hidden rounded-xl shadow-lg">
+                    <img src="material/new-yorkimage.avif" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+                        <h3 class="text-white font-extrabold uppercase tracking-widest text-sm">New York</h3>
+                        <p class="text-white/70 text-[10px] uppercase">Live Reporting</p>
+                    </div>
+                </a>
+                <a href="dubai.html" class="city-card group block overflow-hidden rounded-xl shadow-lg">
+                    <img src="material/dubaimage.avif" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+                        <h3 class="text-white font-extrabold uppercase tracking-widest text-sm">Dubai</h3>
+                        <p class="text-white/70 text-[10px] uppercase">Live Reporting</p>
+                    </div>
+                </a>
+                <a href="tokyo.html" class="city-card group block overflow-hidden rounded-xl shadow-lg">
+                    <img src="material/tokyoimage.avif" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+                        <h3 class="text-white font-extrabold uppercase tracking-widest text-sm">Tokyo</h3>
+                        <p class="text-white/70 text-[10px] uppercase">Live Reporting</p>
+                    </div>
+                </a>
+                <a href="paris.html" class="city-card group block overflow-hidden rounded-xl shadow-lg">
+                    <img src="material/parisimage.avif" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+                        <h3 class="text-white font-extrabold uppercase tracking-widest text-sm">Paris</h3>
+                        <p class="text-white/70 text-[10px] uppercase">Live Reporting</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Counter Section -->
+    <section class="counter-section py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+                <div>
+                    <i class="fas fa-users text-3xl mb-4 text-[#77b9c5]"></i>
+                    <div class="text-4xl font-bold"><span class="counter">800</span>+</div>
+                    <p class="uppercase text-xs tracking-widest mt-2 opacity-70">Reporters</p>
+                </div>
+                <div>
+                    <i class="fas fa-globe text-3xl mb-4 text-[#77b9c5]"></i>
+                    <div class="text-4xl font-bold"><span class="counter">65</span>+</div>
+                    <p class="uppercase text-xs tracking-widest mt-2 opacity-70">Countries</p>
+                </div>
+                <div>
+                    <i class="fas fa-language text-3xl mb-4 text-[#77b9c5]"></i>
+                    <div class="text-4xl font-bold"><span class="counter">5</span>+</div>
+                    <p class="uppercase text-xs tracking-widest mt-2 opacity-70">Languages</p>
+                </div>
+                <div>
+                    <i class="fas fa-clock text-3xl mb-4 text-[#77b9c5]"></i>
+                    <div class="text-4xl font-bold" id="london-time">00:00:00</div>
+                    <p class="uppercase text-xs tracking-widest mt-2 opacity-70">London Time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Modal -->
+    <div id="news-modal" class="fixed inset-0 z-[100000] flex justify-center items-center p-4 bg-black/90">
+        <div class="bg-white max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded shadow-2xl relative">
+            <button onclick="closeNews()" class="fixed md:absolute top-4 right-4 text-4xl text-white md:text-gray-800 hover:text-red-600 z-[100001]">&times;</button>
+            <img id="modal-img" src="" class="w-full h-[450px] object-cover">
+            <div class="p-8 md:p-12">
+                <span id="modal-tag" class="bg-red-600 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider"></span>
+                <h2 id="modal-title" class="text-4xl font-black text-[#0d2a4d] mt-6 mb-4 leading-tight"></h2>
+                <div id="modal-desc" class="text-lg text-gray-700 leading-relaxed space-y-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-logo">DNBC NEWS</div>
+                    <p class="mt-3">DNBC is a global digital news network providing breaking news, world updates, business insights and sports coverage.</p>
+                    <div class="social-icons mt-3">
+                        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Navigation</h5>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="world.html">Today in World</a>
+                    <a href="sports.html">Sports</a>
+                    <a href="business.html">Business</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Categories</h5>
+                    <a href="#">Breaking News</a>
+                    <a href="#">Technology</a>
+                    <a href="#">Health</a>
+                    <a href="#">Education</a>
+                    <a href="#">Environment</a>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5>Top Cities</h5>
+                    <a href="new-york.html">New York</a>
+                    <a href="london.html">London</a>
+                    <a href="dubai.html">Dubai</a>
+                    <a href="tokyo.html">Tokyo</a>
+                    <a href="paris.html">Paris</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact</h5>
+                    <p><i class="bi bi-envelope"></i> info@dnbcnews.com</p>
+                    <p><i class="bi bi-telephone"></i> +1 234 567 890</p>
+                    <h5 class="mt-4">Newsletter</h5>
+                    <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                        <input type="email" placeholder="Enter Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 DNBC Global News Network | <a href="#" class="inline text-gray-500">Privacy Policy</a> | <a href="#" class="inline text-gray-500">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () { $('#splash-screen').fadeOut(800); }, 1000);
+            $('.counter').counterUp({ delay: 10, time: 1500 });
+
+            function updateTime() {
+                let d = new Date().toLocaleString("en-US", { timeZone: "Europe/London" });
+                let t = new Date(d).toLocaleTimeString();
+                $('#london-time').text(t);
+            }
+            setInterval(updateTime, 1000);
+            updateTime();
+        });
+
+        const newsContent = {
+            1: { title: "Digital Currency Overhaul", tag: "Economy", date: "March 15, 2026", img: "/material/globalmainimage.jpg", desc: "<p>Central banks representing over 40 nations have announced the Unified Ledger Initiative...</p>" },
+            2: { title: "AI Regulation Accord", tag: "Technology", date: "March 14, 2026", img: "/material/techimage.avif", desc: "<p>A landmark treaty signed by 120 countries to regulate AGI development...</p>" },
+            3: { title: "Arctic Ice Stabilizing", tag: "Environment", date: "March 12, 2026", img: "/material/envierment.jpg", desc: "<p>Environmental scientists reporting a stabilization in melting rates...</p>" },
+            4: { title: "World Cup 2026 Upgrades", tag: "Sports", date: "March 10, 2026", img: "/material/sportsimage.jpg", desc: "<p>Host cities Canada, Mexico, and USA unveil smart stadium features...</p>" }
+        };
+
+        function openStory(id) {
+            const story = newsContent[id];
+            $('#modal-title').text(story.title);
+            $('#modal-tag').text(story.tag);
+            $('#modal-img').attr('src', story.img);
+            $('#modal-desc').html(story.desc);
+            $('#news-modal').fadeIn(300).css('display', 'flex');
+            $('body').css('overflow', 'hidden');
+        }
+
+        function closeNews() {
+            $('#news-modal').fadeOut(300);
+            $('body').css('overflow', 'auto');
+        }
+
+        $('#news-modal').click(function (e) { if (e.target == this) closeNews(); });
+    </script>
+</body>
+</html>

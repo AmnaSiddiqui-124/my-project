@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNBC | LIFESTYLE 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(13, 42, 77, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .lifestyle-gradient {
+            background: linear-gradient(rgba(13, 42, 77, 0.7), rgba(13, 42, 77, 0.7)),
+                url('https://images.unsplash.com/photo-1511110531613-207908b9821d?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-accent {
+            border-left: 6px solid #cc0000;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f0f2f5] text-gray-900">
+
+    <!-- NAVBAR (Updated with BACK TO HOME link) -->
+    <nav class="bg-white border-b-2 border-[#0d2a4d] p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-3xl font-black text-[#0d2a4d] tracking-tighter">DNBC <span
+                    class="text-red-600">LIFESTYLE</span></div>
+
+            <!-- Back to Home Link (Same as World Page) -->
+            <a href="index.html" class="text-[#0d2a4d] font-bold hover:text-red-600 transition flex items-center">
+                <i class="fas fa-globe-americas mr-2"></i> BACK TO HOME
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="lifestyle-gradient text-white py-32 text-center relative">
+        <div class="relative z-10 px-6">
+            <span
+                class="bg-red-600 text-white px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] mb-6 inline-block">Featured
+                Life & Style</span>
+            <h1 class="text-5xl md:text-7xl font-black uppercase mb-6 leading-tight">The Future of Urban <br> Wellness
+                in 2026</h1>
+            <p class="text-gray-200 max-w-2xl mx-auto text-xl font-light">SCROLL DOWN TO EXPLORE THE MODERN LIFESTYLE
+                EVOLUTION</p>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-black text-[#0d2a4d] mb-12 section-accent pl-6 uppercase tracking-tighter">Latest in
+            Life</h2>
+
+        <!-- ARTICLE GRID -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- Article 1 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestyle1.avif"
+                    class="w-full h-56 object-cover" alt="Health">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Health</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">Human Mental Health</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Human mental health is a crucial part of overall well-being that influences how people think,
+                        feel, and behave. It affects how individuals handle stress, build relationships, and make
+                        decisions.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestyle2.jpg"
+                    class="w-full h-56 object-cover" alt="Fashion">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Fashion Week 2026</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">Paris Fashion Week</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Paris Fashion Week Fall/Winter 2026–2027 cemented Paris’s status as the capital of the "Big
+                        Four." The season was defined by "opulent minimalism" and historic leadership changes.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestyle3.avif"
+                    class="w-full h-56 object-cover" alt="Modern World">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">The World in 2026</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">The World 2026</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Global lifestyle in 2026 is centered around intentional living. Technology and AI are deeply
+                        integrated, helping with personalization, while individuals practice digital minimalism.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestyle4.avif"
+                    class="w-full h-56 object-cover" alt="Social Media">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Modern Lifestyle</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">A Double-Edged Sword</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Social media platforms influence personal identity. While great for networking, excessive use
+                        leads to anxiety. Modern living requires a balance between the digital and real world.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestyle5.avif"
+                    class="w-full h-56 object-cover" alt="Travel">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Travel Lifestyle</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">Travel Lifestyle 2026</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Travel in 2026 is about meaningful experiences. People prefer cultural exploration and wellness
+                        retreats over trend-driven trips. It’s now more personal and fulfilling.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="glass-card rounded-xl overflow-hidden shadow-lg border-b-4 border-red-600">
+                <img src="material/lifestye6.avif"
+                    class="w-full h-56 object-cover" alt="Urban Life">
+                <div class="p-6">
+                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Urban Lifestyle</span>
+                    <h3 class="text-2xl font-bold text-[#0d2a4d] mt-2 mb-4 uppercase">Urban Wellness 2026</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Cities are being reshaped for human longevity. Public parks, fitness zones, and social wellness
+                        programs like yoga and meditation are now central to city design.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- FOOTER  -->
+    <footer class="bg-white text-[#0d2a4d] py-12 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-4xl font-black mb-2 tracking-tighter">DNBC <span class="text-red-600">LIFESTYLE</span>
+            </div>
+            <p class="text-gray-500 mb-8 uppercase tracking-[0.4em] text-[10px] font-bold">Life & Style Reporting •
+                London Headquarters</p>
+            <div class="flex justify-center space-x-8 text-xl mb-8">
+                <i class="fab fa-facebook-f hover:text-blue-600 cursor-pointer transition"></i>
+                <i class="fab fa-twitter hover:text-blue-600 cursor-pointer transition"></i>
+                <i class="fab fa-instagram hover:text-pink-600 cursor-pointer transition"></i>
+                <i class="fab fa-youtube hover:text-red-600 cursor-pointer transition"></i>
+            </div>
+            <p class="text-gray-400 text-xs font-bold">&copy; 2026 DNBC NEWS NETWORK. ALL RIGHTS RESERVED. ACCURATE.
+                UNBIASED. GLOBAL.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
